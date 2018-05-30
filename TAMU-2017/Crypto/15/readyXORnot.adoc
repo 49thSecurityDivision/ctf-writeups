@@ -1,0 +1,122 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c100000\c100000\c100000;}
+\paperw12240\paperh15840\margl1440\margr1440\vieww14000\viewh16000\viewkind0\viewscale124
+\deftab720
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Challenge Hint:
+\fs48 \
+\pard\pardeftab720\sl520\sa200\qc\partightenfactor0
+\cf2 readyXORnot\
+\pard\pardeftab720\sl380\sa200\qc\partightenfactor0
+
+\fs36 \cf2 15\
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\fs28 \cf2 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\b \cf2 original data
+\b0 : "El Psy Congroo"\cb1 \uc0\u8232 
+\b \cb3 encrypted data
+\b0 : "IFhiPhZNYi0KWiUcCls="\cb1 \uc0\u8232 
+\b \cb3 encrypted flag
+\b0 : "I3gDKVh1Lh4EVyMDBFo="\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 \cb3 The flag is not in the traditional gigem\{flag\} format.\cb1 \
+\
+\cb3 Challenge Solution:\
+So, we have some 
+\b original data
+\b0 , and the encrypted version of that data. Additionally, we have the encrypted version of some other data, but not the original. So, the idea of this challenge is to find the \'91original data\'92 from the 
+\b encrypted flag
+\b0 . \
+I would bet that there are plenty of tools that solve things like this, but I like working with my \'91hands\'92 as much as possible, so let\'92s break all of this down. \
+I put the \'91
+\b original data
+\b0 \'92 into the following site: {\field{\*\fldinst{HYPERLINK "https://www.rapidtables.com/convert/number/ascii-hex-bin-dec-converter.html"}}{\fldrslt https://www.rapidtables.com/convert/number/ascii-hex-bin-dec-converter.html}}\
+Here\'92s what I got:\
+\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\b \cf2 ASCII text:\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\b0 \cf2 El Psy Congroo\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\b \cf2 Hex:
+\b0 \
+45 6C 20 50 73 79 20 43 6F 6E 67 72 6F 6F\
+
+\b Binary:
+\b0 \
+01000101 01101100 00100000 01010000 01110011 01111001 00100000 \
+01000011 01101111 01101110 01100111 01110010 01101111 01101111\
+
+\b Decimal:
+\b0 \
+69 108 32 80 115 121 32 67 111 110 103 114 111 111\
+
+\b Base64:
+\b0 \
+RWwgUHN5IENvbmdyb28=\
+\
+We can see by the Base64 version of our original data that this was not simply encrypted with Base64 (
+\b encrypted data
+\b0  is \'91IFhiPhZNYi0KWiUcCls=\'91 and Base64 of 
+\b original data
+\b0  is \'91RWwgUHN5IENvbmdyb28=\'91)\
+\
+This being the case, I decided to check the XOR switches from the binary version of our 
+\b original data
+\b0  against the binary version of the 
+\b encrypted data
+\b0  (the name of the challenge, readyXORnot, indicates we need XOR at some point, so why not now?). \
+\
+Here is what I got:\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1 \cf2 Original : 00100000 01011000 01100010 00111110 00010110 01001101 01100010\
+Encrypted: 01000101 01101100 00100000 01010000 01110011 01111001 00100000\
+Flip/Dont: DFFDDFDF DDFFDFDD DFDDDDFD DFFDFFFD DFFDDFDF DDFFDFDD DFDDDDFD\
+                                                     \
+Original : 00101101 00001010 01011010 00100101 00011100 00001010 01011011\
+Encrypted: 01000011 01101111 01101110 01100111 01110010 01101111 01101111\
+Flip/Dont: DFFDFFFD DFFDDFDF DDFFDFDD DFDDDDFD DFFDFFFD DFFDDFDF DDFFDFDD\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f0 \cf2 \
+\
+The \'91D\'92s represent \'91don\'92t flip\'92 and the \'91F\'92s represent \'91flip.\'92 At first, I thought this was going nowhere, but, when the \'91
+\b encrypted flag
+\b0 \'92 was plugged into the same website, the character-count in binary was the same, which made me think, I should apply the D/F\'92s shown previously in the same order to the \'91
+\b encrypted flag
+\b0 \'92 (just meaning that I applied the \'91flip\'92s or \'91don\'92t flips\'92 in the same order they appeared in the original data). \
+Here is what the 
+\b encrypted flag
+\b0  looks like in binary:\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1 \cf2 00100011 01111000 00000011 00101001 01011000 01110101 00101110 00011110 00000100 01010111 00100011 00000011 00000100 01011010\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f0 \cf2 And here is what it looks like with the D\'92s and F\'92s applied in the same order as applied previously:\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1 \cf2 01000110 01001100 01000001 01000110 00111101 01000001 01101100 01110000 01100001 01100011 01100001 01101101 01100001 01101110
+\f0 \
+And what is the ASCII version of this new binary? 
+\b FLAF=Alpacaman
+\b0 \
+This must be a small type of \'91
+\b FLAG=Alpacaman
+\b0 .\'92 If we enter 
+\b Alpacaman
+\b0  into the solution field, we find that this is the solution.
+\f1 \
+
+{\*\beandata789c9d935d6f82301486aff157748db752d876b12d8851c1c4cc2099b86497153a65e32ba5cef1ef57444aeb66b68c1bda73fabe4f7b4e6b8d3ed3047c105ac6793684a66e4040b2308fe26c3b84eb6036b88323bb675d39cb69f0e2bba048e292017f3d59cca7000e101a17454210720207f88bf92a00dc0321d78300ee182b1e103a1c0e3aae57e9619ed60b4be4d3bc2094550b6e36e0023d6211e498c65dd90e8f4671c8ec9e66bd93caee631aee62bec242f594474b46f9666d6ff5482a128d45fa146f75f9e68d84ac14324c29ae07c2a09fed934492692d573b3984092e855e4e37f9e9acbf9e3b5d5eb3e28c912da1f6ad85dae1518854636fa5f39fec2cf6a6502e603aceb5ca5140a8f36ca16715f93ff7e64fdc2eda567ce28ebd27f6ead6f78d778ef1e866cf48f9dcf4dfdba71ba591d2490dd334ee0df5c03ff68b5c3a9fb8360e57711aa6958c92572c8f8552b2dfead9d0329c1289f70b4354a4736bbc585e887b2a8a56cf2704670e665830cece7cde24513053ad540756ded6e9e109b6501bf52759b43a0b1d5facddfb02aa1d4161}}
