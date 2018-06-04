@@ -1,0 +1,6 @@
+[submodule "csawctf-2017/misc/50-serial/CSAW-CTF-2017-Quals"]
+	path = csawctf-2017/misc/50-serial/CSAW-CTF-2017-Quals
+	url = git@github.com:isislab/CSAW-CTF-2017-Quals.git
+[submodule "mitrectf-2018/linux/150/mitre_CTF-linux_challenges"]
+	path = mitrectf-2018/linux/150/mitre_CTF-linux_challenges
+	url = git@github.com:mitre-cyber-academy/2018-Linux.git

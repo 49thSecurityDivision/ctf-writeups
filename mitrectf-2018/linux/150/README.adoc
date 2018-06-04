@@ -1,0 +1,19 @@
+=== How do I exit vim?
+
+I love using vim, so this was  fun challenge for me. I have first attached the link to where Mitre has all the challenges and what we were given to work off of.
+
+link:https://github.com/mitre-cyber-academy/2018-ctf-game#user-content-linux[challenge]
+
+Also, I have included the linux challenges as a submodule of this repository, so if you want the files for the submodule make sure you do `git pull --recurse-submodules`. This challenge is specifically in the link:https://github.com/mitre-cyber-academy/2018-Linux/tree/135c83b01d0a5a81f52d665ad1987acc717d30e0/vim-shell[mitre_CTF-linux_challenges/vim-shell/] folder to view the files they used in the challenge.
+
+==== Problem
+I knew vim was powerful, and I have done rshell escapes out of vim before but my problem was it wouldn't execute anything. When trying to do `!/bin/bash` it wouldn't execute anything...so at first I was stumpped.
+
+==== Solution
+Then I thought about my vim extension I use, link:https://github.com/scrooloose/nerdtree[nerdtree], and figured there had to be some native way to do the same. So then duckduckgo'ed link:https://duckduckgo.com/?q=show+files+in+vim[show files in vim] and the first answer was said to use `:Ex` to explore in the vim explorer. Which is what you see me use below, from there it is just using vim keybinding to navigate around. (I am used to that because I put `bindkey -v` in my .zshrc or you can do the same in bash with `set editing-mode vi` in your `~/.inputrc` file)
+
+===== Video
+
+Here is a termanal capture of me solving the problem. I didn't solve it this quickly but to make the video concise I just put how to get the answer.
+
+image::https://asciinema.org/a/UT98ARPrk1DW3RopGlIp0JoBL.png[asciicast, link="https://asciinema.org/a/UT98ARPrk1DW3RopGlIp0JoBL"]
