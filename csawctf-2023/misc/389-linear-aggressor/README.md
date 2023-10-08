@@ -118,7 +118,7 @@ a<sub>31</sub>, because the zeroes eliminate all of the other parameters.
 
 Since we know the value of a<sub>31</sub>, we can subtract this from the
 result that we receive, and we are left with our parameter.
-a
+
 The same logic holds for each of the other parameters. First, let's create a
 matrix, known as the **identity matrix**.
 
