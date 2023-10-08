@@ -179,7 +179,7 @@ like ASCII values. Let's try to print them.
 ```julia
 println(join(Char.(A)))
 
-# => csawctf{m0d31\_5t341ing\_i5\_b4d}
+# => csawctf{m0d31_5t341ing_i5_b4d}
 ```
 
 Like many other CTF puzzles, it's easy once you know the trick! I hope you
