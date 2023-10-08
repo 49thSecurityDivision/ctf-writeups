@@ -60,7 +60,7 @@ Okay, so it takes in 30 numbers and outputs 1 number. If we assume that the
 model really is a linear regression like they say, then it should look someting
 like this:
 
-`y(x) = a<sub>1</sub>*x<sub>1</sub> + a<sub>2</sub>*x<sub>2</sub> + a<sub>3</sub>*x<sub>3</sub> + a<sub>4</sub>*x<sub>4</sub> + a<sub>5</sub>*x<sub>5</sub> + ... + a<sub>30</sub>*x<sub>30</sub> + a<sub>31</sub></code>`
+y(x) = a<sub>1</sub>\*x<sub>1</sub> + a<sub>2</sub>\*x<sub>2</sub> + a<sub>3</sub>\*x<sub>3</sub> + a<sub>4</sub>\*x<sub>4</sub> + a<sub>5</sub>\*x<sub>5</sub> + ... + a<sub>30</sub>\*x<sub>30</sub> + a<sub>31</sub>
 
 As you can see, there are 31 parameters. 30 for each of the inputs plus a
 constant parameter at the end. This model is more difficult to imagine as a
@@ -102,7 +102,7 @@ result(rand(1:100, 30))
 
 Now, the idea is to steal the parameters from the model. One parameter is easy
 to get: if we give the models all zeros, the only thing left will be the last
-parameter, `a<sub>31</sub>`.
+parameter, a<sub>31</sub>.
 
 ```julia
 a31 = result(fill(0, 30))
@@ -112,11 +112,11 @@ a31 = result(fill(0, 30))
 
 The other parameters are slightly more complicated.
 
-Let's consider the first parameter, `a<sub>1</sub>`. We can give the model 1 as
-the first number, and 0 for all other numbers. This gives us `a<sub>1</sub> +
-a<sub>31</sub>`, because the zeroes eliminate all of the other parameters.
+Let's consider the first parameter, a<sub>1</sub>. We can give the model 1 as
+the first number, and 0 for all other numbers. This gives us a<sub>1</sub> +
+a<sub>31</sub>, because the zeroes eliminate all of the other parameters.
 
-Since we know the value of `a<sub>31</sub>`, we can subtract this from the
+Since we know the value of a<sub>31</sub>, we can subtract this from the
 result that we receive, and we are left with our parameter.
 a
 The same logic holds for each of the other parameters. First, let's create a
